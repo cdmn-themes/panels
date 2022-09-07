@@ -11,7 +11,7 @@
 
 <header>
   <a href="/" class="h-full block">
-    <img src="$lib/images/logo.svg" class="h-full p-2" alt="">
+    <img src="API_URL/blobs/{data.logo}" class="h-full p-2" alt="">
   </a>
 </header>
 
