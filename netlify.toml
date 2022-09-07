@@ -2,6 +2,8 @@
   command = "npm run build"
   publish = "build"
 
-[template.environment]
-  SITE_ID = "Your Website ID"
+[context.production.environment]
   API_URL = "https://cms.cdmn.de"
+
+[template.environment]
+  SITE_ID = "CDMN Website ID"
