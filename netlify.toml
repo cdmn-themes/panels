@@ -4,4 +4,4 @@
 
 [template.environment]
   SITE_ID = "Your Website ID"
-  API_URL = https://cms.cdmn.de
+  API_URL = "https://cms.cdmn.de"
