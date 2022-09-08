@@ -1,5 +1,3 @@
-# Panels
+# Sliding Pages
 
-A CDMN theme created by [buhrmi](https://github.com/buhrmi).
-
-[Create new website](https://cms.cdmn.de/sites/new?theme=panels)
+[Create a webseite with this theme](https://cms.cdmn.de/sites/new?theme=sliding_pages)

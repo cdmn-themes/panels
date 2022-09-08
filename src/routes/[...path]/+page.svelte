@@ -21,7 +21,7 @@
   let panels
   $: {
     panels = []
-    if (data.children) {
+    if (data.schema_name == 'panels') {
       data.children.forEach((child) => {
         panels.push({...child, component: 'sublink'})
       })
@@ -29,6 +29,8 @@
     else {
       panels.push(data)
     }
+    console.log(panels)
+    panels = panels
   }
 
   let isTouch = false
@@ -57,8 +59,8 @@
         on:blur
         on:touchstart={() => isTouch = true}
         class="relative panel text-center overflow-hidden">
-
-        <img src="API_URL/blobs/{panel.image}" class="centered object-center object-cover h-screen w-screen" alt="">
+    
+        <img src="API_URL/blobs/{panel.content.image}" class="centered object-center object-cover h-screen w-screen" alt="">
         
         <svelte:component this={components[`/src/lib/components/${panel.component}.svelte`]} data={panel}/>
       </div>

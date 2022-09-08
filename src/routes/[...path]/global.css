@@ -13,6 +13,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: rgb(119, 31, 68);
+}
+
 body {
   height: 100vh;
 }

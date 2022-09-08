@@ -20,7 +20,7 @@
     top: 50%;
     width: 32px;
     height: 3px;
-    background-color: white;
+    background-color: black;
     transition: all 400ms cubic-bezier(.84,.06,.52,1.8);
   }
   .icon-1 {

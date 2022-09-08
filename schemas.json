@@ -4,9 +4,12 @@
     "favicon": "image",
     "logo": "image"
   },
-  "page": {
+  "children_as_panels": {
     "title": "string",
-    "image": "image",
-    "component": ["panels", "gallery"]
+    "image": "image"
+  },
+  "just_some_html": {
+    "title": "string",
+    "html": "html"
   }
 }

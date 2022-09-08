@@ -1,10 +1,12 @@
-export async function load({url}) {
-  const path = url.pathname
-  const data = await fetch(`API_URL/contents/${path}`, {
+import { error } from '@sveltejs/kit'
+
+export function load({url}) {
+  return fetch(`API_URL/content?path=${url.pathname}`, {
     headers: {
-      'Authorization': `Bearer SITE_ID`
+      'Authorization': `Bearer SITE_ID`,
+      'Accept': 'application/json'
     }
-  }).then(res => res.json())
-  data.path = path
-  return data
+  })
+  .then(res => res.json())
+  .catch(e => {throw error(404, 'Not found')})
 }
