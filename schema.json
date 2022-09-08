@@ -1,0 +1,12 @@
+{
+  "site": {
+    "title": "string",
+    "favicon": "image",
+    "logo": "image"
+  },
+  "page": {
+    "title": "string",
+    "image": "image",
+    "component": ["panels", "gallery"]
+  }
+}

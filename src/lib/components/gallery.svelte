@@ -1,6 +1,6 @@
 <script>
   import { fly } from 'svelte/transition'
-  export let panel
+  export let data
 </script>
 
 

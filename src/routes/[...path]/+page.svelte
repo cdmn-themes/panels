@@ -2,7 +2,7 @@
   import { cubicInOut } from 'svelte/easing'
   export let data
   
-  const components = import.meta.glob(`$lib/panels/*.svelte`, {import: 'default', eager: true})
+  const components = import.meta.glob(`$lib/components/*.svelte`, {import: 'default', eager: true})
 
   let transitioning = false
   function css(node, {
@@ -60,7 +60,7 @@
 
         <img src="API_URL/blobs/{panel.image}" class="centered object-center object-cover h-screen w-screen" alt="">
         
-        <svelte:component this={components[`/src/lib/panels/${panel.component}.svelte`]} {panel}/>
+        <svelte:component this={components[`/src/lib/components/${panel.component}.svelte`]} data={panel}/>
       </div>
     {/each}
   </div>
