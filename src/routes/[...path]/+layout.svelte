@@ -1,9 +1,10 @@
 <script>
   import {scale,fade} from 'svelte/transition'
-  import Burger from '$lib/burger.svelte'
   import './global.css'
   import 'virtual:uno.css'
+
   export let data
+  
   let open = true
 </script>
 
@@ -18,26 +19,26 @@
 {#if open}
   <div transition:fade={{duration: 600}} on:click|self={() => open = false} class="fixed bg-dark/60 z-1 w-full h-full"></div>
   <div transition:scale={{duration: 660, start: 0.9}} class="centered absolute z-2 flex flex-col gap-1px w-92 max-w-full uppercase text-center font-light">
-    <a href="/restaurant" on:click={() => open = !open} class="bg-white p-3">
+    <a href="/restaurant" on:click={() => open = !open} class="bg-light p-5">
       Restaurant
     </a>
-    <a href="/unsere_karten" on:click={() => open = !open} class="bg-white p-3">
+    <a href="/unsere_karten" on:click={() => open = !open} class="bg-light p-5">
       Unsere Karten
     </a>
-    <a href="/reservierung" on:click={() => open = !open} class="bg-white p-3">
+    <a href="/reservierung" on:click={() => open = !open} class="bg-light p-5">
       Reservierung
     </a>
-    <a href="/karriere" on:click={() => open = !open} class="bg-white p-3">
+    <a href="/karriere" on:click={() => open = !open} class="bg-light p-5">
       Karriere
     </a>
     <div class="grid grid-cols-3 text-white w-full text-xs">
       <a href="/" on:click={() => open = !open} class="p-3 text-left">
         Home
       </a>
-      <a href="/" on:click={() => open = !open} class="p-3 text-center">
+      <a href="/kontakt" on:click={() => open = !open} class="p-3 text-center">
         Kontakt
       </a>
-      <a href="/" on:click={() => open = !open} class="p-3 text-right">
+      <a href="/impressum" on:click={() => open = !open} class="p-3 text-right">
         Impressum
       </a>
     </div>

@@ -38,8 +38,9 @@
     document.querySelectorAll('.active').forEach((el) => {
       el.classList.remove('active')
     })
-
   }
+
+  let activeSection
 </script>
 
 <div class="relative h-full" class:transitioning>
@@ -59,13 +60,17 @@
           <a transition:fade href={panel.path} class="absolute w-full h-full flex items-center justify-center uppercase !text-white">
             <h2 class="relative">{panel.content.title}</h2>
           </a>
-        {:else}
-          <div transition:slide class="absolute grid grid-cols-2 w-108 max-w-full centered-x bottom-0 text-black gap-1">
-            <h2 class=" bg-light/80 col-span-2 uppercase">{panel.content.title}</h2>
-            <div class="bg-light/80 col-span-2 p-8 text-left">
-              {@html panel.content.html}
-            </div>
-            
+        {:else if data.schema_name = 'white_sections'}
+          <div transition:slide class="absolute grid grid-cols-2 w-132 max-w-full centered-x bottom-1 text-black gap-1">
+            <h1 class=" bg-light/90 col-span-2 uppercase text-sm p-2">{panel.content.title}</h1>
+            {#each panel.content.sections as section}
+              <h2 class=" text-xl bg-light/90 col-span-2 uppercase p-2 cursor-pointer" on:click={() => activeSection = !activeSection && section}>{section.title}</h2>
+            {/each}
+            {#if activeSection}
+              <div transition:slide class="bg-light/90 col-span-2 p-8 text-left">
+                {@html activeSection.content}
+              </div>
+            {/if}
           </div>
         {/if}
       </div>
