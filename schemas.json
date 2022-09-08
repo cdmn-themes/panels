@@ -8,8 +8,12 @@
     "title": "string",
     "image": "image"
   },
-  "just_some_html": {
+  "white_sections": {
     "title": "string",
-    "html": "html"
+    "image": "image",
+    "sections": {
+      "title": "string",
+      "content": "html"
+    }
   }
 }

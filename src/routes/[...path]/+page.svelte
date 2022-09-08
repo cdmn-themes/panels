@@ -1,8 +1,7 @@
 <script>
   import { cubicInOut } from 'svelte/easing'
+  import { fade, slide } from 'svelte/transition'
   export let data
-  
-  const components = import.meta.glob(`$lib/components/*.svelte`, {import: 'default', eager: true})
 
   let transitioning = false
   function css(node, {
@@ -20,17 +19,12 @@
 
   let panels
   $: {
-    panels = []
-    if (data.schema_name == 'panels') {
-      data.children.forEach((child) => {
-        panels.push({...child, component: 'sublink'})
-      })
+    if (data.schema_name == 'children_as_panels') {
+      panels = data.children
     }
     else {
-      panels.push(data)
+      panels = [data]
     }
-    console.log(panels)
-    panels = panels
   }
 
   let isTouch = false
@@ -61,8 +55,19 @@
         class="relative panel text-center overflow-hidden">
     
         <img src="API_URL/blobs/{panel.content.image}" class="centered object-center object-cover h-screen w-screen" alt="">
-        
-        <svelte:component this={components[`/src/lib/components/${panel.component}.svelte`]} data={panel}/>
+        {#if data.schema_name == 'children_as_panels'}
+          <a transition:fade href={panel.path} class="absolute w-full h-full flex items-center justify-center uppercase !text-white">
+            <h2 class="relative">{panel.content.title}</h2>
+          </a>
+        {:else}
+          <div transition:slide class="absolute grid grid-cols-2 w-108 max-w-full centered-x bottom-0 text-black gap-1">
+            <h2 class=" bg-light/80 col-span-2 uppercase">{panel.content.title}</h2>
+            <div class="bg-light/80 col-span-2 p-8 text-left">
+              {@html panel.content.html}
+            </div>
+            
+          </div>
+        {/if}
       </div>
     {/each}
   </div>
