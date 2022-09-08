@@ -4,6 +4,7 @@
   export let data
 
   let transitioning = false
+
   function css(node, {
     delay = 0,
     duration = 1220,
@@ -35,6 +36,7 @@
   }
 
   function clearHovered() {
+    if (transitioning) return
     document.querySelectorAll('.active').forEach((el) => {
       el.classList.remove('active')
     })
@@ -50,7 +52,7 @@
         on:introstart={() => transitioning = true} on:introend={() => transitioning = false}
         on:outrostart={() => transitioning = true} on:outroend={() => transitioning = false}
         on:mouseenter={setHovered}
-        on:mouseout|self={clearHovered}
+        on:mouseleave={clearHovered}
         on:blur
         on:touchstart={() => isTouch = true}
         class="relative panel text-center overflow-hidden">
@@ -61,15 +63,22 @@
             <h2 class="relative">{panel.content.title}</h2>
           </a>
         {:else if data.schema_name = 'white_sections'}
-          <div transition:slide class="absolute grid grid-cols-2 w-132 max-w-full centered-x bottom-1 text-black gap-1">
-            <h1 class=" bg-light/90 col-span-2 uppercase text-sm p-2">{panel.content.title}</h1>
-            {#each panel.content.sections as section}
-              <h2 class=" text-xl bg-light/90 col-span-2 uppercase p-2 cursor-pointer" on:click={() => activeSection = !activeSection && section}>{section.title}</h2>
-            {/each}
+          <div out:slide in:slide={{delay: 1000}} class="absolute flex flex-col w-132 max-w-full centered-x bottom-1 text-black gap-1">
+            <h1 class=" bg-light/90  uppercase text-sm p-2">{panel.content.title}</h1>
+            <div class="flex gap-1">
+              {#each panel.content.sections as section}
+                <button class="relative grow text-xl bg-light/90 uppercase p-2 cursor-pointer" on:click={() => activeSection = activeSection == section ? null : section}>
+                  {section.title}
+                  <span class="absolute right-4 top-3 i-akar-icons:chevron-up transition-all" class:rotate-180={activeSection == section}></span>
+                </button>
+              {/each}
+            </div>
             {#if activeSection}
-              <div transition:slide class="bg-light/90 col-span-2 p-8 text-left">
-                {@html activeSection.content}
-              </div>
+              {#key activeSection}
+                <div transition:slide class="bg-light/90 p-8 text-left">
+                  {@html activeSection.content}
+                </div>
+              {/key}
             {/if}
           </div>
         {/if}

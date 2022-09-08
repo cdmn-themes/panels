@@ -8,9 +8,11 @@
 		"preview": "vite preview"
 	},
 	"devDependencies": {
+		"@iconify/json": "^2.1.104",
 		"@rollup/plugin-replace": "^4.0.0",
 		"@sveltejs/adapter-netlify": "next",
 		"@sveltejs/kit": "next",
+		"@unocss/preset-icons": "^0.45.18",
 		"svelte": "3.49.0",
 		"svelte-preprocess-import-assets": "^0.1.6",
 		"unocss": "^0.45.18",

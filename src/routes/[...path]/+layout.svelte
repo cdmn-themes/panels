@@ -1,6 +1,6 @@
 <script>
   import {scale,fade} from 'svelte/transition'
-  import './global.css'
+  import '$lib/global.css'
   import 'virtual:uno.css'
 
   export let data
@@ -12,9 +12,6 @@
   <title>{data.content.title}</title>
   <link rel="icon" href="API_URL/blobs/{data.content.favicon}" />
 </svelte:head>
-
-
-
   
 {#if open}
   <div transition:fade={{duration: 600}} on:click|self={() => open = false} class="fixed bg-dark/60 z-1 w-full h-full"></div>
