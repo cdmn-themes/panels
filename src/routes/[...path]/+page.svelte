@@ -66,7 +66,7 @@
           <div out:slide in:slide={{delay: 1000}} class="absolute flex flex-col w-132 max-w-full centered-x bottom-1 text-black gap-1">
             <h1 class=" bg-light/90  uppercase text-sm p-2">{panel.content.title}</h1>
             <div class="flex gap-1">
-              {#each panel.content.sections as section}
+              {#each panel.content.sections || [] as section}
                 {@const active = $page.url.hash == '#'+section.hash}
                 <a href={active ? '#' : `#${section.hash}`} class="relative grow text-xl bg-light/90 uppercase p-2 cursor-pointer">
                   {section.title}
@@ -74,7 +74,7 @@
                 </a>
                 {/each}
               </div>
-              {#each panel.content.sections as section}
+              {#each panel.content.sections || [] as section}
                 {#if $page.url.hash == ('#'+section.hash)}
                   <!-- {#key activeSection} -->
                     <div transition:slide class="bg-light/90 p-8 text-left">
