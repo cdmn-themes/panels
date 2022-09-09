@@ -14,6 +14,7 @@
       "title": "string",
       "image": "image",
       "sections": {
+        "hash": "string",
         "title": "string",
         "content": "html"
       }

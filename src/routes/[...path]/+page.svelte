@@ -1,4 +1,5 @@
 <script>
+  import { page } from '$app/stores'
   import { cubicInOut } from 'svelte/easing'
   import { fade, slide } from 'svelte/transition'
   export let data
@@ -67,19 +68,19 @@
             <h1 class=" bg-light/90  uppercase text-sm p-2">{panel.content.title}</h1>
             <div class="flex gap-1">
               {#each panel.content.sections as section}
-                <button class="relative grow text-xl bg-light/90 uppercase p-2 cursor-pointer" on:click={() => activeSection = activeSection == section ? null : section}>
+                <a href={$page.url.hash == section.hash ? '#' : `#${section.hash}`} class="relative grow text-xl bg-light/90 uppercase p-2 cursor-pointer">
                   {section.title}
                   <span class="absolute right-4 top-3 i-akar-icons:chevron-up transition-all" class:rotate-180={activeSection == section}></span>
-                </button>
+                </a>
+                {#if $page.url.hash == section.hash}
+                  <!-- {#key activeSection} -->
+                    <div transition:slide class="bg-light/90 p-8 text-left">
+                      {@html activeSection.content}
+                    </div>
+                  <!-- {/key} -->
+                {/if}
               {/each}
             </div>
-            {#if activeSection}
-              {#key activeSection}
-                <div transition:slide class="bg-light/90 p-8 text-left">
-                  {@html activeSection.content}
-                </div>
-              {/key}
-            {/if}
           </div>
         {/if}
       </div>
