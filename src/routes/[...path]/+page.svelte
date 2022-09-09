@@ -46,7 +46,8 @@
 
 <div class="relative h-full" class:transitioning>
   <div class="absolute w-full h-full flex flex-col md:flex-row gap-1px">
-    {#each panels as panel (panel.path)}
+    
+    {#each panels || [] as panel (panel.path)}
       <div transition:css|local
         on:introstart={() => transitioning = true} on:introend={() => transitioning = false}
         on:outrostart={() => transitioning = true} on:outroend={() => transitioning = false}
