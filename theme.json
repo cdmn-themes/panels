@@ -8,10 +8,12 @@
   "pages": {
     "children_as_panels": {
       "title": "string",
+      "subtitle": "string",
       "image": "image"
     },
     "simple_content": {
       "title": "string",
+      "subtitle": "string",
       "image": "image",
       "sections": {
         "hash": "string",

@@ -42,8 +42,6 @@
       el.classList.remove('active')
     })
   }
-
-  let activeSection
 </script>
 
 <div class="relative h-full" class:transitioning>
@@ -58,9 +56,9 @@
         on:touchstart={() => isTouch = true}
         class="relative panel text-center overflow-hidden">
     
-        <img src="API_URL/blobs/{panel.content.image}" class="centered object-center object-cover h-screen w-screen" alt="">
+        <img src="API_URL/attachments/{panel.content.image}?w=1920" class="centered object-center object-cover h-screen w-screen" alt="">
         {#if data.schema_name == 'children_as_panels'}
-          <a transition:fade href={panel.path} class="absolute w-full h-full flex items-center justify-center uppercase !text-white">
+          <a transition:fade href={panel.path} class="centered w-screen overflow-hidden h-full flex items-center justify-center uppercase !text-white">
             <h2 class="relative">{panel.content.title}</h2>
           </a>
         {:else if data.schema_name = 'white_sections'}
@@ -68,19 +66,22 @@
             <h1 class=" bg-light/90  uppercase text-sm p-2">{panel.content.title}</h1>
             <div class="flex gap-1">
               {#each panel.content.sections as section}
-                <a href={$page.url.hash == section.hash ? '#' : `#${section.hash}`} class="relative grow text-xl bg-light/90 uppercase p-2 cursor-pointer">
+                {@const active = $page.url.hash == '#'+section.hash}
+                <a href={active ? '#' : `#${section.hash}`} class="relative grow text-xl bg-light/90 uppercase p-2 cursor-pointer">
                   {section.title}
-                  <span class="absolute right-4 top-3 i-akar-icons:chevron-up transition-all" class:rotate-180={activeSection == section}></span>
+                  <span class="absolute right-4 top-3 i-akar-icons:chevron-up transition-all" class:rotate-180={active}></span>
                 </a>
-                {#if $page.url.hash == section.hash}
+                {/each}
+              </div>
+              {#each panel.content.sections as section}
+                {#if $page.url.hash == ('#'+section.hash)}
                   <!-- {#key activeSection} -->
                     <div transition:slide class="bg-light/90 p-8 text-left">
-                      {@html activeSection.content}
+                      {@html section.content}
                     </div>
                   <!-- {/key} -->
                 {/if}
               {/each}
-            </div>
           </div>
         {/if}
       </div>
