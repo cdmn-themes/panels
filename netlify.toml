@@ -6,4 +6,4 @@
   API_URL = "https://cms.cdmn.de/api"
 
 [template.environment]
-  SITE_ID = "CDMN Website ID"
+  SITE_TOKEN = "CDMN Website ID"

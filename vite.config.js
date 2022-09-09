@@ -22,7 +22,7 @@ const config = {
 		}),
 		replace({
       'API_URL': process.env.API_URL || 'http://localhost:3000/api',
-			'SITE_ID': process.env.SITE_ID,
+			'SITE_TOKEN': process.env.SITE_TOKEN,
     })
 	]
 };

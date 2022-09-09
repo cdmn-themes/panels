@@ -3,7 +3,7 @@ import { error } from '@sveltejs/kit'
 export function load() {
   return fetch(`API_URL/site`, {
     headers: {
-      'Authorization': `Bearer SITE_ID`,
+      'Authorization': `Bearer SITE_TOKEN`,
       'Accept': 'application/json'
     }
   })
