@@ -15,7 +15,7 @@
       delay,
       duration,
       easing,
-      css: t => `--transitionProgress: ${t};`
+      css: t => `flex-basis: calc(${t *100}% * var(--scale, 1));`
     };
   }
 
@@ -57,7 +57,7 @@
         <video loop playsinline muted autoplay poster="API_URL/attachments/{panel.content.image}?w=1920" class="centered object-center object-cover h-screen w-screen" alt="">
           <source src="API_URL/attachments/{panel.content.image}" type="video/mp4">
         </video>
-        
+
         {#if data.schema_name == 'children_as_panels'}
           <a transition:fade href={panel.path} class="centered w-screen overflow-hidden h-full flex flex-col items-center justify-center uppercase !text-white">
             <h2 class="relative md:text-size-8 font-normal">{panel.content.title}</h2>
@@ -101,8 +101,8 @@
 
 <style>
   .panel {
-    transition: flex-grow 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.0);
-    flex-grow: calc(var(--transitionProgress, 1) * var(--scale, 1));
+    transition: flex-basis 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.0);
+    flex-basis: calc(100% * var(--scale, 1));
   }
   
   :global(.panel.active){
