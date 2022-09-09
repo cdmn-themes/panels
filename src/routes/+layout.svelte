@@ -17,16 +17,16 @@
 {#if open}
   <div transition:fade={{duration: 600}} on:click|self={() => open = false} class="fixed bg-dark/60 z-1 w-full h-full"></div>
   <div transition:scale={{duration: 660, start: 0.9}} class="centered absolute z-2 flex flex-col gap-1px w-92 max-w-full uppercase text-center font-light">
-    <a href="/welcome/restaurant" on:click={() => open = !open} class="bg-light p-5">
+    <a href="/willkommen/restaurant" on:click={() => open = !open} class="bg-light p-5">
       Restaurant
     </a>
-    <a href="/welcome/unsere_karten" on:click={() => open = !open} class="bg-light p-5">
+    <a href="/willkommen/unsere_karten" on:click={() => open = !open} class="bg-light p-5">
       Unsere Karten
     </a>
-    <a href="/welcome/reservierung" on:click={() => open = !open} class="bg-light p-5">
+    <a href="/willkommen/reservierung" on:click={() => open = !open} class="bg-light p-5">
       Reservierung
     </a>
-    <a href="/welcome/karriere" on:click={() => open = !open} class="bg-light p-5">
+    <a href="/willkommen/karriere" on:click={() => open = !open} class="bg-light p-5">
       Karriere
     </a>
     <div class="grid grid-cols-3 text-white w-full text-xs">

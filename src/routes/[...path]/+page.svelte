@@ -1,7 +1,7 @@
 <script>
   import { page } from '$app/stores'
   import { cubicInOut } from 'svelte/easing'
-  import { fade, slide } from 'svelte/transition'
+  import { fade, slide, fly } from 'svelte/transition'
   export let data
 
   let transitioning = false
@@ -21,12 +21,9 @@
 
   let panels
   $: {
-    if (data.schema_name == 'children_as_panels') {
-      panels = data.children
-    }
-    else {
-      panels = [data]
-    }
+    if (data.schema_name == 'children_as_panels') panels = data.children
+    else if (data) panels = [data]
+    else panels = []
   }
 
   let isTouch = false
@@ -86,6 +83,14 @@
           </div>
         {/if}
       </div>
+    {:else}
+      <div in:fly={{delay: 500, y:30, duration: 900}} class="color-black flex flex-col relative w-full h-full items-center justify-center text-center">
+        <h1>404: Not found</h1>
+        <p>
+          Hoppla, diese Seite ist noch nicht ganz fertiggestellt.<br>Bitte versuchen Sie es später noch einmal.
+        </p>
+      </div>
+
     {/each}
   </div>
 </div>
