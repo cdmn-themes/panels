@@ -23,10 +23,10 @@
     <a href="/willkommen/unsere_karten" on:click={() => open = !open} class="bg-light p-5">
       Unsere Karten
     </a>
-    <a href="/willkommen/reservierung" on:click={() => open = !open} class="bg-light p-5">
+    <a href="/reservierung" on:click={() => open = !open} class="bg-light p-5">
       Reservierung
     </a>
-    <a href="/willkommen/karriere" on:click={() => open = !open} class="bg-light p-5">
+    <a href="/karriere" on:click={() => open = !open} class="bg-light p-5">
       Karriere
     </a>
     <div class="grid grid-cols-3 text-white w-full text-xs">
