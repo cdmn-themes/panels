@@ -53,11 +53,17 @@
         on:blur
         on:touchstart={() => isTouch = true}
         class="relative panel text-center overflow-hidden">
-    
-        <img src="API_URL/attachments/{panel.content.image}?w=1920" class="centered object-center object-cover h-screen w-screen" alt="">
+
+        <video loop playsinline muted autoplay poster="API_URL/attachments/{panel.content.image}?w=1920" class="centered object-center object-cover h-screen w-screen" alt="">
+          <source src="API_URL/attachments/{panel.content.image}" type="video/mp4">
+        </video>
+        
         {#if data.schema_name == 'children_as_panels'}
-          <a transition:fade href={panel.path} class="centered w-screen overflow-hidden h-full flex items-center justify-center uppercase !text-white">
-            <h2 class="relative">{panel.content.title}</h2>
+          <a transition:fade href={panel.path} class="centered w-screen overflow-hidden h-full flex flex-col items-center justify-center uppercase !text-white">
+            <h2 class="relative md:text-size-8 font-normal">{panel.content.title}</h2>
+            {#if panel.content.subtitle}
+              <h3 class="relative text-size-4">{panel.content.subtitle}</h3>
+            {/if}
           </a>
         {:else if data.schema_name = 'white_sections'}
           <div out:slide in:slide={{delay: 1000}} class="absolute flex flex-col w-132 max-w-full centered-x bottom-1 text-black gap-1">
@@ -73,11 +79,9 @@
               </div>
               {#each panel.content.sections || [] as section}
                 {#if $page.url.hash == ('#'+section.hash)}
-                  <!-- {#key activeSection} -->
-                    <div transition:slide class="bg-light/90 p-8 text-left">
-                      {@html section.content}
-                    </div>
-                  <!-- {/key} -->
+                  <div transition:slide class="bg-light/90 p-8 text-left">
+                    {@html section.content}
+                  </div>
                 {/if}
               {/each}
           </div>

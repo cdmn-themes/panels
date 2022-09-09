@@ -1,6 +1,6 @@
-import { sveltekit } from '@sveltejs/kit/vite';
 import Unocss from 'unocss/vite'
 import { presetUno } from 'unocss'
+import { sveltekit } from '@sveltejs/kit/vite';
 import replace from '@rollup/plugin-replace';
 import presetIcons from '@unocss/preset-icons'
 
