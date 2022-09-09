@@ -3,7 +3,7 @@
   publish = "build"
 
 [context.production.environment]
-  API_URL = "https://cms.cdmn.de"
+  API_URL = "https://cms.cdmn.de/api"
 
 [template.environment]
   SITE_ID = "CDMN Website ID"

@@ -1,0 +1,22 @@
+{
+  "name": "Sliding Pages",
+  "schema": {
+    "title": "string",
+    "favicon": "image",
+    "logo": "image"
+  },
+  "pages": {
+    "children_as_panels": {
+      "title": "string",
+      "image": "image"
+    },
+    "simple_content": {
+      "title": "string",
+      "image": "image",
+      "sections": {
+        "title": "string",
+        "content": "html"
+      }
+    }
+  }
+}
