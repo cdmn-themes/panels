@@ -89,7 +89,7 @@
                   </div>
                 {/if}
               {/each}
-            {:else if panel.content?.length == 1}
+            {:else if panel.content?.sections.length == 1}
               <div class="bg-light/90 p-8 text-left">
                 {@html panel.content.sections[0].content}
               </div>
