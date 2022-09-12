@@ -12,14 +12,15 @@
 </main>
 
 <footer class="uppercase flex gap-4">
-  
-  {#each data.siblings as sibling}
-    <a class:active={data.path == sibling.path} href={sibling.path}>{sibling.content.title}</a>
+  {#if data.siblings.length > 1}
+    {#each data.siblings as sibling}
+      <a class:active={data.path == sibling.path} href={sibling.path}>{sibling.content.title}</a>
+    {/each}
   {:else}
     {#each data.children as child}
       <a class:active={data.path == child.path} href={child.path}>{child.content.title}</a>
     {/each}
-  {/each}
+  {/if}
   
 </footer>
 
