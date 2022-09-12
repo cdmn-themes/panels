@@ -47,6 +47,7 @@
   <div class="absolute w-full h-full flex flex-col md:flex-row gap-1px">
     
     {#each panels || [] as panel (panel.path)}
+      {@const image = panel.content.images?.length ? panel.content.images[0] : panel.content.image}
       <div transition:css|local
         on:introstart={() => transitioning = true} on:introend={() => transitioning = false}
         on:outrostart={() => transitioning = true} on:outroend={() => transitioning = false}
@@ -56,9 +57,9 @@
         on:touchstart={() => isTouch = true}
         class="relative panel text-center overflow-hidden">
 
-        <Preload let:src src="API_URL/attachments/{panel.content.image}?w=1920">
+        <Preload let:src src="API_URL/attachments/{image}?w=1920">
           <video in:fade|local={{duration: 600}} loop playsinline muted autoplay poster={src} class="centered object-center object-cover h-screen w-screen" alt="">
-            <source src="API_URL/attachments/{panel.content.image}" type="video/mp4">
+            <source src="API_URL/attachments/{image}" type="video/mp4">
           </video>
         </Preload>
 
@@ -69,7 +70,7 @@
               <h3 class="relative text-size-4">{panel.content.subtitle}</h3>
             {/if}
           </a>
-        {:else if data.schema_name = 'white_sections'}
+        {:else if data.schema_name = 'simple_content'}
           <div out:slide in:slide={{duration: 650, delay: 1000}} class="absolute flex flex-col w-132 max-w-full centered-x bottom-1 text-black gap-1">
             <h1 class=" bg-light/90  uppercase text-sm p-2">{panel.content.title}</h1>
             {#if panel.content?.length > 1}
