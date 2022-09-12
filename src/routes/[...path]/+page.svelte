@@ -30,13 +30,13 @@
   function setHovered(e) {
     if (isTouch) return
     clearHovered()
-    e.currentTarget.classList.add('active')
+    e.currentTarget.classList.add('activepanel')
   }
 
   function clearHovered() {
     if (transitioning) return
-    document.querySelectorAll('.active').forEach((el) => {
-      el.classList.remove('active')
+    document.querySelectorAll('.activepanel').forEach((el) => {
+      el.classList.remove('activepanel')
     })
   }
 </script>
@@ -105,7 +105,7 @@
     flex-basis: calc(100% * var(--scale, 1));
   }
   
-  :global(.panel.active){
+  :global(.panel.activepanel){
     --scale: 3;
   }
   

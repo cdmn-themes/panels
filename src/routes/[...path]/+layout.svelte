@@ -11,20 +11,31 @@
 <slot />
 </main>
 
-<footer class="uppercase">
-  {data.content.title}
+<footer class="uppercase flex gap-4">
+  
+  {#each data.siblings as sibling}
+    <a class:active={data.path == sibling.path} href={sibling.path}>{sibling.content.title}</a>
+  {:else}
+    {#each data.children as child}
+      <a class:active={data.path == child.path} href={child.path}>{child.content.title}</a>
+    {/each}
+  {/each}
+  
 </footer>
 
 
 
 <style>
-    main {
+  main {
     color: white;
     flex-grow: 1;
   }
-
+  
   footer {
     height: 2rem;
     /* border-top: 1px solid black; */
+  }
+  footer a.active {
+    font-weight: bold;
   }
 </style>

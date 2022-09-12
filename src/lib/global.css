@@ -22,7 +22,7 @@ a {
   text-decoration: none;
 }
 
-a:hover, button:hover {
+a:hover, button:hover, a.active {
   color: rgb(119, 31, 68);
 }
 
