@@ -9,12 +9,12 @@
     "children_as_panels": {
       "title": "string",
       "subtitle": "string",
-      "image": "image"
+      "images": "images"
     },
     "simple_content": {
       "title": "string",
       "subtitle": "string",
-      "image": "image",
+      "images": "images",
       "sections": {
         "hash": "string",
         "title": "string",
