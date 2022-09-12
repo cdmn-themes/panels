@@ -70,7 +70,7 @@
             {/if}
           </a>
         {:else if data.schema_name = 'white_sections'}
-          <div out:slide in:slide={{delay: 1000}} class="absolute flex flex-col w-132 max-w-full centered-x bottom-1 text-black gap-1">
+          <div out:slide in:slide={{duration: 650, delay: 1000}} class="absolute flex flex-col w-132 max-w-full centered-x bottom-1 text-black gap-1">
             <h1 class=" bg-light/90  uppercase text-sm p-2">{panel.content.title}</h1>
             {#if panel.content?.length > 1}
               <div class="flex gap-1">
@@ -89,7 +89,7 @@
                   </div>
                 {/if}
               {/each}
-            {:else}
+            {:else if panel.content?.length == 1}
               <div class="bg-light/90 p-8 text-left">
                 {@html panel.content.sections[0].content}
               </div>
