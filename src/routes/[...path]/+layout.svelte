@@ -21,10 +21,7 @@
       <a class:active={data.path == child.path} href={child.path}>{child.content.title}</a>
     {/each}
   {/if}
-  
 </footer>
-
-
 
 <style>
   main {

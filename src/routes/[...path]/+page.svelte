@@ -2,6 +2,8 @@
   import { page } from '$app/stores'
   import { cubicInOut } from 'svelte/easing'
   import { fade, slide, fly } from 'svelte/transition'
+  import Preload from '$lib/preload.svelte';
+
   export let data
 
   let transitioning = false
@@ -54,9 +56,11 @@
         on:touchstart={() => isTouch = true}
         class="relative panel text-center overflow-hidden">
 
-        <video loop playsinline muted autoplay poster="API_URL/attachments/{panel.content.image}?w=1920" class="centered object-center object-cover h-screen w-screen" alt="">
-          <source src="API_URL/attachments/{panel.content.image}" type="video/mp4">
-        </video>
+        <Preload let:src src="API_URL/attachments/{panel.content.image}?w=1920">
+          <video in:fade|local={{duration: 600}} loop playsinline muted autoplay poster={src} class="centered object-center object-cover h-screen w-screen" alt="">
+            <source src="API_URL/attachments/{panel.content.image}" type="video/mp4">
+          </video>
+        </Preload>
 
         {#if data.schema_name == 'children_as_panels'}
           <a transition:fade href={panel.path} class="centered w-screen overflow-hidden h-full flex flex-col items-center justify-center uppercase !text-white">
