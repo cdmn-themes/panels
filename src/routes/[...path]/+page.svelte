@@ -73,7 +73,7 @@
             {/if}
           </a>
         {:else if data.schema_name = 'simple_content' && data.path == panel.path}
-          <div out:slide in:slide={{duration: 650, delay: 1000}} class="absolute flex flex-col w-132 max-w-full centered-x bottom-1 text-black gap-1">
+          <div out:slide in:slide={{duration: 650, delay: 1000}} class="fixed flex flex-col w-132 max-w-full centered-x bottom-2.2rem text-black gap-1">
             <h1 class=" bg-light/90  uppercase text-sm p-2">{panel.content.title}</h1>
             {#if panel.content?.length > 1}
               <div class="flex gap-1">
@@ -114,7 +114,7 @@
 
 <style>
   .panel {
-    transition: flex-basis 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.0);
+    transition: flex-basis 1s cubic-bezier(0.175, 0.885, 0.32, 1.0);
     flex-basis: calc(100% * var(--scale, 1));
   }
   
