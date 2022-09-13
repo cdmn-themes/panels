@@ -73,7 +73,7 @@
             {/if}
           </a>
         {:else if data.path == panel.path}
-          <div out:slide in:slide={{duration: 650, delay: 1000}} class="fixed flex flex-col w-132 max-w-full centered-x bottom-2.2rem text-black gap-1">
+          <div out:slide in:slide={{duration: 650, delay: 1000}} class="fixed flex flex-col w-132 max-w-full centered-x bottom-3.6rem text-black gap-1">
             <h1 class=" bg-light/90  text-sm uppercase text- p-2">{panel.content.title}</h1>
             {#if panel.content?.sections.length > 1}
               <div class="flex gap-1">

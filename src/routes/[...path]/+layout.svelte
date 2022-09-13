@@ -17,14 +17,14 @@
 <slot />
 </main>
 
-<footer class="uppercase flex gap-4">
+<footer class="uppercase relative flex text-sm md:text-base">
   {#if data.siblings.length > 1}
     {#each data.siblings as sibling}
-      <a class:active={data.path == sibling.path} href={sibling.path}>{sibling.content.title}</a>
+      <a class="p-1 md:p-2" class:active={data.path == sibling.path} href={sibling.path}>{sibling.content.title}</a>
     {/each}
   {:else}
     {#each data.children as child}
-      <a class:active={data.path == child.path} href={child.path}>{child.content.title}</a>
+      <a  class="p-1 md:p-2" class:active={data.path == child.path} href={child.path}>{child.content.title}</a>
     {/each}
   {/if}
 </footer>
@@ -33,7 +33,7 @@
   main {
     color: white;
     flex-grow: 1;
-    margin-bottom: 2rem;
+    margin-bottom: 3.5rem;
   }
   
   footer {
@@ -41,7 +41,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 2rem;
+    height: 3.5rem;
     /* border-top: 1px solid black; */
   }
   footer a.active {
