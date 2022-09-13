@@ -27,6 +27,7 @@
   main {
     color: white;
     flex-grow: 1;
+    margin-bottom: 2rem;
   }
   
   footer {
