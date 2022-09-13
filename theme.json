@@ -4,7 +4,10 @@
     "title": "string",
     "favicon": "image",
     "logo": "image",
-    "phone": "string"
+    "phone": "string",
+    "meta_description": "string",
+    "meta_keywords": "string",
+    "meta_image": "image"
   },
   "pages": {
     "children_as_panels": {

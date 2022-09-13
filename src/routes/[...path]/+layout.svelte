@@ -1,9 +1,15 @@
 <script>
   export let data
+
+  $: image = data.content.images?.length ? data.content.images[0] : data.content.image
 </script>
 
 <svelte:head>
   <title>{data.content.title}</title>
+  {#if image}
+    <meta name="og:image" content="API_URL/attachments/{image}?w=1200" />
+    <meta name="twitter:image" content="API_URL/attachments/{image}?w=1200" />
+  {/if}
 </svelte:head>
   
 
