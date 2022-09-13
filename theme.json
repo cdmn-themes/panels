@@ -3,7 +3,8 @@
   "schema": {
     "title": "string",
     "favicon": "image",
-    "logo": "image"
+    "logo": "image",
+    "phone": "string"
   },
   "pages": {
     "children_as_panels": {
