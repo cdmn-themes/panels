@@ -18,13 +18,13 @@
 </main>
 
 <footer class="uppercase relative flex text-sm md:text-base">
-  {#if data.siblings.length > 1}
+  {#if data.siblings?.length > 1}
     {#each data.siblings as sibling}
       <a class="p-1 md:p-2" class:active={data.path == sibling.path} href={sibling.path}>{sibling.content.title}</a>
     {/each}
   {:else}
-    {#each data.children as child}
-      <a  class="p-1 md:p-2" class:active={data.path == child.path} href={child.path}>{child.content.title}</a>
+    {#each data.children || [] as child}
+      <a class="p-1 md:p-2" class:active={data.path == child.path} href={child.path}>{child.content.title}</a>
     {/each}
   {/if}
 </footer>

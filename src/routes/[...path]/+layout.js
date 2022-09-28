@@ -7,6 +7,6 @@ export function load({url}) {
       'Accept': 'application/json'
     }
   })
-  .then(res => res.json())
+  .then(res => {return res.json()})
   .catch(e => {throw error(404, 'Not found')})
 }

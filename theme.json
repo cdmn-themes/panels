@@ -13,7 +13,12 @@
     "children_as_panels": {
       "title": "string",
       "subtitle": "string",
-      "images": "images"
+      "images": "images",
+      "sections": {
+        "hash": "string",
+        "title": "string",
+        "content": "html"
+      }
     },
     "simple_content": {
       "title": "string",

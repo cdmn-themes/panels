@@ -1,8 +1,9 @@
 <script>
-  import { page } from '$app/stores'
+  
   import { cubicInOut } from 'svelte/easing'
   import { fade, slide, fly } from 'svelte/transition'
   import Preload from '$lib/preload.svelte';
+  import Sections from '$lib/sections.svelte'
 
   export let data
 
@@ -72,31 +73,13 @@
               <h3 class="relative text-size-4">{panel.content.subtitle}</h3>
             {/if}
           </a>
+          <div out:slide in:slide={{duration: 650, delay: 1000}} class="fixed flex flex-col w-132 max-w-full centered-x bottom-3.6rem text-black gap-1">
+            <Sections sections={panel.content.sections} />
+          </div>
         {:else if data.path == panel.path}
           <div out:slide in:slide={{duration: 650, delay: 1000}} class="fixed flex flex-col w-132 max-w-full centered-x bottom-3.6rem text-black gap-1">
             <h1 class=" bg-light/90  text-sm uppercase text- p-2">{panel.content.title}</h1>
-            {#if panel.content?.sections.length > 1}
-              <div class="flex gap-1">
-                {#each panel.content.sections || [] as section}
-                  {@const active = $page.url.hash == '#'+section.hash}
-                  <a href={active ? '#' : `#${section.hash}`} class="relative grow bg-light/90 uppercase p-2 cursor-pointer">
-                    {section.title}
-                    <span class="absolute right-4 top-3 i-akar-icons:chevron-up transition-all" class:rotate-180={active}></span>
-                  </a>
-                {/each}
-              </div>
-              {#each panel.content.sections || [] as section}
-                {#if $page.url.hash == ('#'+section.hash)}
-                  <div transition:slide class="bg-light/90 p-8 text-left">
-                    {@html section.content}
-                  </div>
-                {/if}
-              {/each}
-            {:else if panel.content?.sections.length == 1}
-              <div class="bg-light/90 p-8 text-left">
-                {@html panel.content.sections[0].content}
-              </div>
-            {/if}
+            <Sections sections={panel.content.sections} />
           </div>
         {/if}
       </div>
