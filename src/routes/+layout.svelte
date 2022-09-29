@@ -56,7 +56,7 @@
   </div>
 {/if}
 
-<header>
+<header class="bg-light">
   <button class="p-2 absolute left-2 tracking-4px cursor-pointer transition-all" on:click|preventDefault={() => open = !open} >
     MENU
   </button>

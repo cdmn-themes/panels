@@ -98,7 +98,7 @@
                 {/each}
               </div>
             {/if}
-            <h1 class=" bg-light/90  text-sm uppercase text- p-2">{panel.content.title}</h1>
+            <h1 class=" bg-light  text-sm uppercase text- p-2">{panel.content.title}</h1>
             <Sections sections={panel.content.sections} />
           </div>
         {/if}

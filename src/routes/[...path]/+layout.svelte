@@ -17,7 +17,7 @@
 <slot />
 </main>
 
-<footer class="uppercase relative flex text-sm md:text-base">
+<footer class="uppercase relative flex text-sm md:text-base bg-light">
   {#if data.siblings?.length > 1}
     {#each data.siblings as sibling}
       <a class="p-1 md:p-2" class:active={data.path == sibling.path} href={sibling.path}>{sibling.content.title}</a>
@@ -37,7 +37,7 @@
   }
   
   footer {
-    background-color: white;
+    
     position: fixed;
     bottom: 0;
     width: 100%;
