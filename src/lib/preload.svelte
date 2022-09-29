@@ -4,16 +4,20 @@
   export let src
   
   let loaded = false
-  
-  onMount(function() {
+  $: if (loaded && loaded !== src) load()
+
+  function load() {
     const image = new Image();
     image.src = src;
     image.onload = () => {
-      loaded = true
+      loaded = src
     }
-  })
+    console.log('loading ',src)
+  }
+
+  onMount(load)
 </script>
 
-{#if loaded}
+{#if loaded == src}
   <slot {src} />
 {/if}

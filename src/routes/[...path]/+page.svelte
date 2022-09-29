@@ -4,6 +4,7 @@
   import { fade, slide, fly } from 'svelte/transition'
   import Preload from '$lib/preload.svelte';
   import Sections from '$lib/sections.svelte'
+    import { blank_object } from 'svelte/internal';
 
   export let data
 
@@ -20,6 +21,12 @@
       easing,
       css: t => `flex-basis: calc(${t *100}% * var(--scale, 1));`
     };
+  }
+
+  const panelGalleryPositions = {}
+
+  function setPanelGalleryIndex(panel, index) {
+    panelGalleryPositions[panel.path] = index
   }
 
   let panels
@@ -49,7 +56,7 @@
   <div class="absolute w-full h-full flex flex-col md:flex-row gap-1px">
     
     {#each panels || [] as panel (panel.path)}
-      {@const image = panel.content.images?.length ? panel.content.images[0] : panel.content.image}
+      {@const image = panel.content.images?.length ? panel.content.images[panelGalleryPositions[panel.path] || 0] : panel.content.image}
       <div transition:css|local
         on:introstart={() => transitioning = true} on:introend={() => transitioning = false}
         on:outrostart={() => transitioning = true} on:outroend={() => transitioning = false}
@@ -60,11 +67,15 @@
         class="relative panel text-center overflow-hidden"
         class:collapsed={data.schema_name !== 'children_as_panels' && panel.path !== data.path}>
 
-        <Preload let:src src="API_URL/attachments/{image}?w=1920">
-          <video in:fade|local={{duration: 600}} loop playsinline muted autoplay poster={src} class="centered object-center object-cover h-screen w-screen" alt="">
-            <source src="API_URL/attachments/{image}" type="video/mp4">
-          </video>
-        </Preload>
+        {#key panelGalleryPositions[panel.path]}
+          <div transition:fade|local={{duration: 600}}>
+            <Preload let:src src="API_URL/attachments/{image}?w=1920">
+              <video loop playsinline muted autoplay poster={src} class="centered object-center object-cover h-screen w-screen" alt="">
+                <source src="API_URL/attachments/{image}" type="video/mp4">
+              </video>
+            </Preload>
+          </div>
+        {/key}
 
         {#if data.schema_name == 'children_as_panels'}
           <a transition:fade href={panel.path} class="centered w-screen overflow-hidden h-full flex flex-col items-center justify-center uppercase !text-white">
@@ -78,6 +89,15 @@
           </div>
         {:else if data.path == panel.path}
           <div out:slide in:slide={{duration: 650, delay: 1000}} class="fixed flex flex-col w-132 max-w-full centered-x bottom-3.6rem text-black gap-1">
+            {#if panel.content?.images?.length > 1}
+              <div class="flex flex-row gap-1 justify-center">
+                {#each panel.content.images as image, i}
+                  <a href="API_URL/attachments/{image}" on:click|preventDefault={() => setPanelGalleryIndex(panel, i)}>
+                    <img src="API_URL/attachments/{image}?h=60" class:!border-light={i == (panelGalleryPositions[panel.path] || 0)} class="h-20 w-20 object-cover border-light/50 hover:border-light border-3 " alt={panel.content.title}>
+                  </a>
+                {/each}
+              </div>
+            {/if}
             <h1 class=" bg-light/90  text-sm uppercase text- p-2">{panel.content.title}</h1>
             <Sections sections={panel.content.sections} />
           </div>
