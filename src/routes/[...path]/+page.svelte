@@ -84,11 +84,11 @@
               <h3 class="relative text-size-4">{panel.content.subtitle}</h3>
             {/if}
           </a>
-          <div out:slide in:slide={{duration: 650, delay: 1000}} class="fixed flex flex-col w-132 max-w-full centered-x bottom-3.6rem text-black gap-1">
+          <div out:slide in:slide={{duration: 650, delay: 600}} class="fixed flex flex-col w-132 max-w-full centered-x bottom-3.6rem text-black gap-1">
             <Sections sections={data.content.sections} expandable />
           </div>
         {:else if data.path == panel.path}
-          <div out:slide in:slide={{duration: 650, delay: 1000}} class="fixed flex flex-col w-132 max-w-full centered-x bottom-3.6rem text-black gap-1">
+          <div out:slide in:slide={{duration: 650, delay: 600}} class="fixed flex flex-col w-132 max-w-full centered-x bottom-3.6rem text-black gap-1">
             {#if panel.content?.images?.length > 1}
               <div class="flex flex-row gap-1 justify-center">
                 {#each panel.content.images as image, i}

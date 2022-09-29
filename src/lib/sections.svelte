@@ -20,12 +20,18 @@
     {#if $page.url.hash == ('#'+section.hash)}
       <div transition:slide class="content bg-light/90 p-8 text-left">
         {@html section.content}
+        {#if section.download}
+          <a href="API_URL/attachments/{section.download}" target="_blank" class="button-filled"><span class="i-bytesize:external -top-1 relative"></span> {section.title}</a>
+        {/if}
       </div>
     {/if}
   {/each}
 {:else if sections?.length == 1}
   <div class="bg-light/90 p-8 text-left content">
     {@html sections[0].content}
+    {#if sections[0].download}
+      <a href="API_URL/attachments/{sections[0].download}" target="_blank" class="button-filled"><span class="i-bytesize:external -top-1 relative"></span> {sections[0].title}</a>
+    {/if}
   </div>
 {/if}
 </div>

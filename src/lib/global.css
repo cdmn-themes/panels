@@ -30,6 +30,17 @@ a:hover, button:hover, a.active {
   color: rgb(119, 31, 68);
 }
 
+.button-filled {
+  background: rgb(119, 31, 68);
+  color: white;
+  padding: 0.8em 1.4em;
+  display: inline-block;
+  font-size: 1.2em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
 body {
   height: 100vh;
 }
