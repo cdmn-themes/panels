@@ -2,9 +2,11 @@
   import {slide} from 'svelte/transition';
   import { page } from '$app/stores'
   export let sections
+  export let expandable
 </script>
 
-{#if sections?.length >= 1}
+<div class="sections">
+{#if sections?.length > 1 || expandable}
   <div class="flex gap-1">
     {#each sections || [] as section}
       {@const active = $page.url.hash == '#'+section.hash}
@@ -16,13 +18,25 @@
   </div>
   {#each sections || [] as section}
     {#if $page.url.hash == ('#'+section.hash)}
-      <div transition:slide class="bg-light/90 p-8 text-left">
+      <div transition:slide class="content bg-light/90 p-8 text-left">
         {@html section.content}
       </div>
     {/if}
   {/each}
 {:else if sections?.length == 1}
-  <div class="bg-light/90 p-8 text-left">
+  <div class="bg-light/90 p-8 text-left content">
     {@html sections[0].content}
   </div>
 {/if}
+</div>
+
+<style>
+  .sections :global(p) {
+    margin-bottom: 1rem;
+    font-size: 17px;
+  }
+  .sections .content {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+</style>

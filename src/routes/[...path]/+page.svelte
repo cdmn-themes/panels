@@ -74,7 +74,7 @@
             {/if}
           </a>
           <div out:slide in:slide={{duration: 650, delay: 1000}} class="fixed flex flex-col w-132 max-w-full centered-x bottom-3.6rem text-black gap-1">
-            <Sections sections={panel.content.sections} />
+            <Sections sections={data.content.sections} expandable />
           </div>
         {:else if data.path == panel.path}
           <div out:slide in:slide={{duration: 650, delay: 1000}} class="fixed flex flex-col w-132 max-w-full centered-x bottom-3.6rem text-black gap-1">
