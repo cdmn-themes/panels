@@ -93,7 +93,7 @@
               <div class="flex flex-row gap-1 justify-center">
                 {#each panel.content.images as image, i}
                   <a href="API_URL/attachments/{image}" on:click|preventDefault={() => setPanelGalleryIndex(panel, i)}>
-                    <img src="API_URL/attachments/{image}?h=60" class:!border-light={i == (panelGalleryPositions[panel.path] || 0)} class="h-20 w-20 object-cover border-light/50 hover:border-light border-3 " alt={panel.content.title}>
+                    <img src="API_URL/attachments/{image}?h=80" class:!border-light={i == (panelGalleryPositions[panel.path] || 0)} class="h-20 w-20 object-cover object-center border-light/50 hover:border-light border-3 " alt={panel.content.title}>
                   </a>
                 {/each}
               </div>

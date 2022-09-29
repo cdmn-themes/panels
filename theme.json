@@ -28,7 +28,8 @@
       "sections": {
         "hash": "string",
         "title": "string",
-        "content": "html"
+        "content": "html",
+        "download": "blob"
       }
     }
   }
