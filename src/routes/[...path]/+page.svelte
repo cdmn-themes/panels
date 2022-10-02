@@ -68,9 +68,9 @@
         class:collapsed={data.schema_name !== 'children_as_panels' && panel.path !== data.path}>
 
         {#key panelGalleryPositions[panel.path]}
-          <div transition:fade|local={{duration: 600}}>
+          <div out:fade|local={{duration: 600}}>
             <Preload let:src src="API_URL/attachments/{image}?w=1920">
-              <video loop playsinline muted autoplay poster={src} class="centered object-center object-cover h-screen w-screen" alt="">
+              <video in:fade={{duration: 600}} loop playsinline muted autoplay poster={src} class="centered object-center object-cover h-screen w-screen" alt="">
                 <source src="API_URL/attachments/{image}" type="video/mp4">
               </video>
             </Preload>
