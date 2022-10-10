@@ -73,7 +73,7 @@
   </a>
 </header>
 
-<button class="py-1.4 px-4 w-full md:w-auto absolute bg-black color-white top-12 z-1 md:top-1 right-1 text-lg" on:click={() => $store.showReservation = true}>Jetzt reservieren</button>
+<button class="py-1.4 px-4 w-full md:w-auto absolute bg-black cursor-pointer !color-white top-12 z-1 md:top-1 right-1 text-lg" on:click={() => $store.showReservation = true}>Jetzt reservieren</button>
 
 
   <slot />
