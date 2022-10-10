@@ -2,11 +2,19 @@
   import '$lib/global.css'
   import 'virtual:uno.css'
 
+  import Reservation from '$lib/reservation.svelte'
+  import { setContext } from 'svelte';
   import {scale,fade} from 'svelte/transition'
   
   export let data
   
   let open = false
+
+  import { writable } from 'svelte/store';
+  const store = writable({
+    showReservation: false
+  })
+  setContext('store', store);
 </script>
 
 <svelte:head>
@@ -36,7 +44,7 @@
     <a href="/willkommen/unsere_karten" on:click={() => open = !open} class="bg-light p-5">
       Unsere Karten
     </a>
-    <a href="/reservierung" on:click={() => open = !open} class="bg-light p-5">
+    <a href="/reservierung" on:click|preventDefault={() => {open = !open; $store.showReservation=true}} class="bg-light p-5">
       Reservierung
     </a>
     <a href="/karriere" on:click={() => open = !open} class="bg-light p-5">
@@ -65,8 +73,14 @@
   </a>
 </header>
 
+<button class="py-1.4 px-4 w-full md:w-auto absolute bg-black color-white top-12 z-1 md:top-1 right-1 text-lg" on:click={() => $store.showReservation = true}>Jetzt reservieren</button>
+
 
   <slot />
+
+{#if $store.showReservation}
+  <Reservation on:click={() => $store.showReservation = false} />
+{/if}
 
 
 

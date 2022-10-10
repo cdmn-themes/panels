@@ -1,6 +1,7 @@
 <script>
+
   export let data
-  console.log(data)
+  
   $: image = data.content.images?.length ? data.content.images[0] : data.content.image
 </script>
 
@@ -28,6 +29,7 @@
     {/each}
   {/if}
 </footer>
+
 
 <style>
   main {
