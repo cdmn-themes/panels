@@ -6,7 +6,7 @@
   onMount(() => {
     // inject opentable script
     const script = document.createElement('script');
-    script.src = `https://www.opentable.com/widget/reservation/loader?rid=${$page.data.site.content.reservation_link}&domain=com&type=standard&theme=standard&overlay=true&iframe=true`
+    script.src = `https://www.opentable.com/widget/reservation/loader?rid=${$page.data.site.content.reservation_link}&domain=de&lang=de-DE&type=standard&theme=standard&overlay=true&iframe=true`
     
     form.appendChild(script);
   })
