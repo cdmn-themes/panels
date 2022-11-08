@@ -12,7 +12,6 @@
     image.onload = () => {
       loaded = src
     }
-    console.log('loading ',src)
   }
 
   onMount(load)
