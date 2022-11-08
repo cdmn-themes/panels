@@ -6,7 +6,7 @@
   onMount(() => {
     // inject opentable script
     const script = document.createElement('script');
-    script.src = `https://www.opentable.com/widget/reservation/loader?rid=${$page.data.site.content.reservation_link}&domain=de&lang=de-DE&type=standard&theme=standard&overlay=true&iframe=true`
+    script.src = `https://www.opentable.com/widget/reservation/loader?rid=${$page.data.site.content.reservation_link}&domain=de&lang=de-DE&type=standard&theme=standard&overlay=true&iframe=false`
     
     form.appendChild(script);
   })
@@ -30,6 +30,9 @@
 <style>
   :global(iframe) {
     display: inline-block;
+  }
+  :global(.ot-dtp-picker) {
+    width: 100% !important;
   }
   hr {
     border-top: 1px solid #ddd;
