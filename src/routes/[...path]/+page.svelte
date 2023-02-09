@@ -4,7 +4,6 @@
   import { fade, slide, fly } from 'svelte/transition'
   import Preload from '$lib/preload.svelte';
   import Sections from '$lib/sections.svelte'
-    import { blank_object } from 'svelte/internal';
 
   export let data
 
